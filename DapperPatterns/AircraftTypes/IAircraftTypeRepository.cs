@@ -8,5 +8,6 @@ namespace DapperPatterns.AircraftTypes
         IGetById<AircraftType>,
         IAddEntities<AircraftType>
     {
+        
     }
 }

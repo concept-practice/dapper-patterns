@@ -18,5 +18,10 @@ namespace DapperPatterns.People
         public Name Name { get; }
 
         public int Age { get; }
+
+        public override string ToString()
+        {
+            return $"Id: {Id} First: {Name.First} Last: {Name.Last} Age: {Age}";
+        }
     }
 }

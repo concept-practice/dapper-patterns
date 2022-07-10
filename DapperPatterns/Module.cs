@@ -5,6 +5,7 @@ using DapperPatterns.Airplanes;
 using DapperPatterns.Dapper;
 using DapperPatterns.Domain;
 using DapperPatterns.Messaging;
+using DapperPatterns.People;
 using Microsoft.EntityFrameworkCore;
 
 namespace DapperPatterns
@@ -25,6 +26,9 @@ namespace DapperPatterns
             services.AddScoped<IBus, Bus>();
             services.AddTransient<IAircraftTypeRepository, SimpleAircraftTypeRepository>();
             services.AddTransient<SqlBuilder<AircraftType, Guid>, AircraftTypeSqlBuilder>();
+
+            services.AddTransient<IPersonRepository, PersonRepository>();
+            services.AddTransient<SqlBuilder<Person, Guid>, PersonSqlBuilder>();
         }
     }
 }

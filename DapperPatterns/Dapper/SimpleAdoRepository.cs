@@ -28,24 +28,26 @@ namespace DapperPatterns.Dapper
             return await ExecuteQueryAsync(_sqlBuilder.SelectAll().Query);
         }
 
-        public async Task<int> AddEntity(TEntity entity)
+        public virtual async Task<int> AddEntity(TEntity entity)
         {
-            throw new NotImplementedException();
+            return await ExecuteNonQueryAsync(_sqlBuilder.Insert(entity).Query);
         }
 
         public async Task<TEntity> GetById(Guid id)
         {
-            throw new NotImplementedException();
+            var result = await ExecuteQueryAsync(_sqlBuilder.GetById(id).Query);
+
+            return result.First();
         }
 
         public async Task<int> DeleteEntity(TEntity entity)
         {
-            throw new NotImplementedException();
+            return await ExecuteNonQueryAsync(_sqlBuilder.Delete(entity).Query);
         }
 
         public async Task<int> AddEntities(IEnumerable<TEntity> entities)
         {
-            throw new NotImplementedException();
+            return await ExecuteNonQueryAsync(_sqlBuilder.InsertMultiple(entities).Query);
         }
 
         protected async Task<int> ExecuteNonQueryAsync(string command, CancellationToken cancellationToken = default)
